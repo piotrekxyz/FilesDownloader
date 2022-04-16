@@ -12,18 +12,17 @@ namespace FilesDownloader.ViewModel
 	public class DownloadFileViewModel
 	{
 		public string FileAddress { get; set; }
-		public ObservableCollection<DownloadFile> DownloadFiles { get; set; }
+		public ObservableCollection<DownloadFile> DownloadFiles { get; } = new ObservableCollection<DownloadFile>();
 
-		public RelayCommand DownloadCommand { get; set; }
-		public RelayCommand OpenFileCommand { get; set; }
-		public RelayCommand AddFileToListCommand { get; set; }
+		public RelayCommand DownloadCommand { get; }
+		public RelayCommand OpenFileCommand { get; }
+		public RelayCommand AddFileToListCommand { get; }
 
 		public DownloadFileViewModel()
 		{
 			DownloadCommand = new RelayCommand(Download, CanDownload);
 			OpenFileCommand = new RelayCommand(OpenFile, CanOpenFile);
 			AddFileToListCommand = new RelayCommand(AddFileToList, CanAddFileToList);
-			DownloadFiles = new ObservableCollection<DownloadFile>();
 		}
 
 		private void OpenFile(object obj)
